@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="soom.control.JanelaListaOrcamentos"
+            prefWidth="600"
+          >
+
+    <content>
+
+        <VBox>
+            <TableView fx:id="tbwOrcamentos" onMouseClicked="#selecionaOrcamento">
+                <columns>
+                    <TableColumn fx:id="tbcData" text="Data"/>
+                    <TableColumn fx:id="tbcCliente" text="Cliente"/>
+                    <TableColumn fx:id="tbcValor" text="Valor (R$)"/>
+                </columns>
+            </TableView>
+
+            <TableView fx:id="tbwServicosOrcamento">
+                <columns>
+                    <TableColumn fx:id="tbcCategoria" text="Categoria"/>
+                    <TableColumn fx:id="tbcNome" text="Servico"/>
+                    <TableColumn fx:id="tbcValorServico" text="Valor (R$)"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+    </content>
+
+
+
+</DialogPane>

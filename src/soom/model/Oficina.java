@@ -13,6 +13,9 @@ public class Oficina {
     private ClienteDAO clienteDAO;
     private ObservableList<Cliente> clientes;
 
+    private CarroDAO carroDAO;
+    private ObservableList<Carro> carros;
+
 
     private ServicoDAO servicoDAO;
     private ObservableList<Servico> servicos;
@@ -21,13 +24,15 @@ public class Oficina {
     private ObservableList<Orcamento> orcamentos;
 
     private Orcamento orcamentoAtual = null;
-   // private ObservableList<Servico> servicosOrcamentoAtual;
+   // private ObservableList<Servico> servicosOrcamentvoidoAtual;
 
 
     private Oficina(){
         clientes = FXCollections.observableArrayList();
         clienteDAO = new ClienteDAOImpl();
 
+        carros = FXCollections.observableArrayList();
+        carroDAO = new CarroDAOImpl();
 
         servicos = FXCollections.observableArrayList();
         servicoDAO = (ServicoDAO) new ServicoDAOImpl();
@@ -66,6 +71,35 @@ public class Oficina {
 
         return clientes;
     }
+
+
+    public Carro insereCarro(String marca, String modelo, String ano) throws SQLException {
+
+        Carro ca = new Carro();
+
+        ca.setMarca(marca);
+        ca.setModelo(modelo);
+        ca.setAno(ano);
+
+        carroDAO.insere(ca);
+
+        carros.add(ca);
+
+        return ca;
+    }
+
+    public ObservableList listaCarros() throws SQLException {
+
+
+        carros.clear();
+        carros.addAll(carroDAO.lista());
+
+        return carros;
+    }
+
+
+
+
 
     public void insereServico(String categoria, String nome, Double valor) throws SQLException {
         Servico s = new Servico();

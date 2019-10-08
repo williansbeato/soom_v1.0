@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import soom.model.Carro;
 import soom.model.Cliente;
 import soom.model.Oficina;
 import soom.model.Servico;
@@ -16,6 +17,10 @@ public class JanelaPrincipal {
 
     @FXML
     private ListView<Cliente> ltwClientes;
+    @FXML
+    private ListView<Carro> ltwCarros;
+
+
     @FXML
     private ListView<Servico> ltwServicos;
     @FXML
@@ -77,6 +82,39 @@ public class JanelaPrincipal {
         }catch (IOException e){
             e.printStackTrace();
         }
+
+    }
+
+    @FXML
+    public  void cadastraCarro(){
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_carro.fxml"));
+
+        try {
+
+            Pane root = loader.load();
+
+            dialog.getDialogPane().setContent(root);
+
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+            Optional<ButtonType> ret = dialog.showAndWait();
+
+            if (ret.isPresent() && ret.get()==ButtonType.OK){
+
+                JanelaCadastroCarro cadastroCarro = loader.getController();
+
+                cadastroCarro.processaResultado();
+            }
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
 
     }
 

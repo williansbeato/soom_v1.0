@@ -98,7 +98,7 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
                 int idServico = rsItens.getInt("idServico");
                 double valorServico = rsItens.getDouble("valor");
 
-                Servico servico = servicoDAO.buscarId(idServico);
+                Servico servico = servicoDAO.buscarID(idServico);
                 servico.setValor(valorServico);
 
                 orcamento.adicionaServico(servico);
@@ -159,7 +159,7 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
                 int idServico = rsItens.getInt("idServico");
                 double valorServico = rsItens.getDouble("valor");
 
-                Servico servico = servicoDAO.buscarId(idServico);
+                Servico servico = servicoDAO.buscarID(idServico);
                 servico.setValor(valorServico);
 
                 orcamento.adicionaServico(servico);

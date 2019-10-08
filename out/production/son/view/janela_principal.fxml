@@ -27,6 +27,7 @@
 
                         <MenuItem text="Cadastra Serviços" onAction="#cadastraServico"/>
 
+                        <MenuItem text="Cadastra Carro" onAction="#cadastraCarro"/>
                     </items>
                 </Menu>
                 <Menu text="Lista">

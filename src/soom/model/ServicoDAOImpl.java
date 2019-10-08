@@ -40,7 +40,7 @@ public class ServicoDAOImpl implements ServicoDAO {
     }
 
     @Override
-    public Servico buscarId(int id) throws SQLException {
+    public Servico buscarID(int id) throws SQLException {
 
         Servico s = null;
 

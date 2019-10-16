@@ -12,6 +12,8 @@ public class ClienteDAOImpl implements ClienteDAO {
 
     private static String BUSCA_ID = "SELECT * FROM clientes WHERE id=?";
 
+    private static String DELETE = "DELETE FROM clientes WHERE id =? ";
+
 
     @Override
     public void insere(Cliente c) throws SQLException {
@@ -114,5 +116,21 @@ public class ClienteDAOImpl implements ClienteDAO {
     @Override
     public void delete(Cliente c) throws SQLException {
 
+        try {
+
+            Connection con = Conexao.getConnection();
+
+            PreparedStatement stm = con.prepareStatement(DELETE);
+
+            stm.setInt(1,c.getId());
+            stm.execute();
+            stm.close();
+            con.close();
+
+        }catch (SQLException e){
+            e.getMessage();
+        }
     }
+
 }
+

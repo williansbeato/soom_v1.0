@@ -169,7 +169,16 @@ public class JanelaPrincipal {
         }
 
     }
-
+//
+//    @FXML
+//    public void excluirServicoOrcamento(){
+//
+//        Servico servico = ltwServicos.getSelectionModel().getSelectedItem();
+//        if (servico == null) {
+//            Oficina.getInstance().delete(ltwServicos.getSelectionModel().getSelectedItem());
+//        }
+//
+//    }
 
     @FXML
     public void fecharOrcamento() {

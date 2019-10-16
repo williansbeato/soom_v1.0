@@ -27,6 +27,8 @@ public class Oficina {
    // private ObservableList<Servico> servicosOrcamentvoidoAtual;
 
 
+
+
     private Oficina(){
         clientes = FXCollections.observableArrayList();
         clienteDAO = new ClienteDAOImpl();
@@ -203,5 +205,18 @@ public class Oficina {
         return false;
     }
 
+//teste para deletar
+//    public boolean delete(Servico s) {
+//
+//
+//        if (orcamentoAtual != null){
+//            orcamentoAtual.setServicos(s);
+//
+//            return true;
+//        }
+//        return false;
+//
+//    }
 
+    ///teste termina aqui
 }

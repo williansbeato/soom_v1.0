@@ -22,7 +22,7 @@ public class  Orcamento {
     public void adicionaServico(Servico s){
         servicos.add(s);
 
-        valor+=s.getValor();
+        //valor+=s.getValor();
 
     }
 

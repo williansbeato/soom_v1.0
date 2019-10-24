@@ -20,8 +20,6 @@
             <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Modelo:" labelFor="$tfModelo"/>
             <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="tfModelo"/>
 
-            <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="Ano:" labelFor="$tfAno"/>
-            <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="tfAno"/>
         </GridPane>
     </content>
 

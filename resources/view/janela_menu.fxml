@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="soom.control.JanelaMenu"
+
+            prefHeight="400.0" prefWidth="600.0">
+
+
+
+    <center>
+
+
+
+        <VBox  spacing="5">
+<!--            <Button text="Cadastro de novos Itens" fx:id="btcadastraItens" onAction="#cadastraItens"/>-->
+
+            <Button text="Orçamento" fx:id="btfazerOrcamento" onAction="#fazerOrcamento"/>
+
+            <Button text="Relatorio" fx:id="btgeraRela" onAction="#geraRela"/>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

@@ -5,7 +5,7 @@ public class Carro {
     private int id;
     private String marca;
     private String modelo;
-    private String ano;
+
 
     public Carro (){}
 
@@ -31,14 +31,6 @@ public class Carro {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
-    }
-
-    public String getAno() {
-        return ano;
-    }
-
-    public void setAno(String ano) {
-        this.ano = ano;
     }
 
     public String toString(){ return this.modelo; }

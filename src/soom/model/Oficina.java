@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
+
 public class Oficina {
 
     private static Oficina instance = new Oficina();
@@ -16,6 +17,8 @@ public class Oficina {
     private CarroDAO carroDAO;
     private ObservableList<Carro> carros;
 
+    private PecaDAO pecaDAO;
+    private ObservableList<Peca> pecas;
 
     private ServicoDAO servicoDAO;
     private ObservableList<Servico> servicos;
@@ -35,6 +38,9 @@ public class Oficina {
 
         carros = FXCollections.observableArrayList();
         carroDAO = new CarroDAOImpl();
+
+        pecas = FXCollections.observableArrayList();
+        pecaDAO = new PecaDAOImpl();
 
         servicos = FXCollections.observableArrayList();
         servicoDAO = (ServicoDAO) new ServicoDAOImpl();
@@ -75,13 +81,12 @@ public class Oficina {
     }
 
 
-    public Carro insereCarro(String marca, String modelo, String ano) throws SQLException {
+    public Carro insereCarro(String marca, String modelo) throws SQLException {
 
         Carro ca = new Carro();
 
         ca.setMarca(marca);
         ca.setModelo(modelo);
-        ca.setAno(ano);
 
         carroDAO.insere(ca);
 
@@ -98,6 +103,32 @@ public class Oficina {
 
         return carros;
     }
+
+
+
+    public Peca inserePeca(String categoria, String nome) throws SQLException {
+
+        Peca p = new Peca();
+
+        p.setCategoria(categoria);
+        p.setNome(nome);
+
+        pecaDAO.insere(p);
+
+        pecas.add(p);
+
+        return p;
+    }
+
+    public ObservableList listaPecas() throws SQLException {
+
+
+        pecas.clear();
+        pecas.addAll(pecaDAO.lista());
+
+        return pecas;
+    }
+
 
 
 
@@ -161,12 +192,15 @@ public class Oficina {
         }
 
         return false;
+
     }
 
-    public double fechaOrcamento() throws  SQLException{
+    public double fechaOrcamento() throws SQLException{
 
         if (orcamentoAtual!=null){
-            double valor = orcamentoAtual.getValor();
+
+
+            double valor = orcamentoAtual.getValor() ;
 
             orcamentoAtual.setData(LocalDateTime.now());
 

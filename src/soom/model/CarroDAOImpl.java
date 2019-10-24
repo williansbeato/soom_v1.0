@@ -7,7 +7,7 @@ import java.util.List;
 public class CarroDAOImpl implements CarroDAO {
 
 
-    private static String INSERE = "INSERT INTO carros(marca,modelo,ano) VALUES (?,?,?)";
+    private static String INSERE = "INSERT INTO carros(marca,modelo) VALUES (?,?)";
     private static String LISTA = "SELECT * FROM carros";
     private static String BUSCA_ID = "SELECT * FROM carros where id=?";
 
@@ -21,7 +21,7 @@ public class CarroDAOImpl implements CarroDAO {
 
         stm.setString(1,ca.getModelo());
         stm.setString(2,ca.getMarca());
-        stm.setString(3,ca.getAno());
+
 
         stm.executeUpdate();
 
@@ -56,12 +56,10 @@ public class CarroDAOImpl implements CarroDAO {
 
             String marca = rs.getString("marca");
             String modelo = rs.getString("modelo");
-            String ano = rs.getString("ano");
 
             ca = new Carro();
             ca.setMarca(marca);
             ca.setModelo(modelo);
-            ca.setAno(ano);
 
 
         }
@@ -91,13 +89,11 @@ public class CarroDAOImpl implements CarroDAO {
             int id = rs.getInt("id");
             String marca = rs.getString("marca");
             String modelo = rs.getString("modelo");
-            String ano = rs.getString("ano");
 
             Carro ca = new Carro();
             ca.setId(id);
             ca.setMarca(marca);
             ca.setModelo(modelo);
-            ca.setAno(ano);
 
             lista.add(ca);
 

@@ -1,11 +1,16 @@
 package soom.model;
 
+import com.itextpdf.layout.element.Cell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 
 import java.time.LocalDateTime;
 
 public class  Orcamento {
+///
+
+   ///////////
 
     private int id;
     private Cliente cliente;
@@ -22,9 +27,11 @@ public class  Orcamento {
     public void adicionaServico(Servico s){
         servicos.add(s);
 
-        //valor+=s.getValor();
+        valor+=s.getValor() ;
 
     }
+
+
 
     public int getId() {
         return id;
@@ -34,9 +41,7 @@ public class  Orcamento {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
+    public Cliente getCliente() {return cliente; }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
@@ -50,9 +55,7 @@ public class  Orcamento {
         this.servicos = servicos;
     }
 
-    public double getValor() {
-        return valor;
-    }
+    public double getValor() {return valor; }
 
     public void setValor(double valor) {
         this.valor = valor;
@@ -69,4 +72,9 @@ public class  Orcamento {
     public String toString(){
         return cliente.getNome()+"(RS"+valor+")";
     }
+/////////////////////////
+
+
+////////
+
 }

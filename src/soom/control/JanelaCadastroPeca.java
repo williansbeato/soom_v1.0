@@ -7,26 +7,28 @@ import soom.model.Oficina;
 
 import java.sql.SQLException;
 
-public class JanelaCadastroCarro {
+public class JanelaCadastroPeca {
 
     @FXML
-    private TextField tfMarca;
+    private TextField tfCategoria;
 
     @FXML
-    private TextField tfModelo;
+    private TextField tfNome;
+
 
     public void processaResultado(){
 
-        String marca = tfMarca.getText();
-        String modelo = tfModelo.getText();
+        String categoria = tfCategoria.getText();
+        String nome = tfNome.getText();
 
         try {
-            Oficina.getInstance().insereCarro(marca,modelo);
+            Oficina.getInstance().inserePeca(categoria,nome);
         }catch (SQLException e){
             e.printStackTrace();
             Alert a = new Alert(Alert.AlertType.ERROR,e.getMessage());
             a.showAndWait();
         }
     }
+
 
 }

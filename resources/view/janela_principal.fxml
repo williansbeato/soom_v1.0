@@ -6,6 +6,10 @@
 <?import javafx.scene.control.MenuItem?>
 
 
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
@@ -13,6 +17,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.ComboBoxListCell?>
+<?import javafx.scene.control.ComboBox?>
 <BorderPane fx:controller="soom.control.JanelaPrincipal"
             xmlns:fx="http://javafx.com/fxml"
 >
@@ -27,7 +33,10 @@
 
                         <MenuItem text="Cadastra Serviços" onAction="#cadastraServico"/>
 
-                        <MenuItem text="Cadastra Carro" onAction="#cadastraCarro"/>
+                        <MenuItem text=" Cadastra Carro" onAction="#cadastraCarro"/>
+
+                        <MenuItem text=" Cadastra Peças" onAction="#cadastraPeca"/>
+
                     </items>
                 </Menu>
                 <Menu text="Lista">
@@ -46,7 +55,13 @@
             </padding>
             <VBox >
                 <Label text="Clientes"/>
-                <ListView fx:id="ltwClientes"  onMouseClicked="#adicionaClienteOrcamento" />
+                <ComboBox fx:id="ltwClientes" onAction="#adicionaClienteOrcamento" />
+<!--          mudar nome do ltwClientes para cbClientes-->
+            </VBox>
+
+            <VBox>
+                <Label text="Carros"/>
+                <ListView fx:id="cbCarros" />
             </VBox>
 
             <VBox>

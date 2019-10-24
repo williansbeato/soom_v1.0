@@ -1,7 +1,6 @@
-//package soom.model;
+//package soom.control;
 //
 //import com.itextpdf.io.font.constants.StandardFonts;
-//import com.itextpdf.io.image.ImageDataFactory;
 //import com.itextpdf.kernel.colors.ColorConstants;
 //import com.itextpdf.kernel.font.PdfFont;
 //import com.itextpdf.kernel.font.PdfFontFactory;
@@ -9,20 +8,45 @@
 //import com.itextpdf.kernel.pdf.PdfWriter;
 //import com.itextpdf.layout.Document;
 //import com.itextpdf.layout.borders.SolidBorder;
-//import com.itextpdf.layout.element.*;
-//import com.itextpdf.layout.property.ListNumberingType;
+//import com.itextpdf.layout.element.Cell;
+//import com.itextpdf.layout.element.Paragraph;
+//import com.itextpdf.layout.element.Table;
 //import com.itextpdf.layout.property.TextAlignment;
 //import com.itextpdf.layout.property.UnitValue;
+//import javafx.application.Platform;
 //
-//import soom.model.*;
-//import soom.*;
+//import javafx.fxml.FXML;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Parent;
+//import javafx.scene.Scene;
+//import javafx.scene.control.Button;
+//import javafx.scene.control.ComboBox;
+//import javafx.scene.layout.BorderPane;
+//import javafx.stage.Stage;
+//import soom.model.Ferramenta;
+//import soom.model.Orcamento;
+//import soom.model.OrcamentoDAO;
+//import soom.model.OrcamentoDAOImpl;
 //
 //import java.io.IOException;
 //import java.sql.SQLException;
 //
-//public class GeradorPDF {
+//public class JanelaMenu {
 //
-//    //este método cria um documento para receber o conteúdo
+//
+//    @FXML
+//    public BorderPane TELA;
+//
+//    @FXML
+//    private Button btgeraRela;
+//    @FXML
+//    private Button btfazerOrcamento;
+//
+//    public void fazerOrcamento(){
+//        Ferramenta.getInstance().mudaJanela(TELA,"/view/janela_principal.fxml");
+//    }
+//
+//
 //    private Document abreDocumento(String arq) throws IOException {
 //        PdfWriter writer = new PdfWriter(arq);
 //        PdfDocument pdf = new PdfDocument(writer);
@@ -32,10 +56,6 @@
 //    }
 //
 //
-//    //cria um pdf com uma tabela. Iremos simular
-//    //uma consulta ao banco de dados que retorna
-//    //uma lista de pessoas e iremos mostrar o resultados
-//    //em um pdf.
 //    public void geraRela(String arq) {
 //        try {
 //
@@ -74,7 +94,7 @@
 //
 //
 //            //utilizado para criar o cabeçalho da tabela
-//            String[] cabecalho = {"Nome", "Telefone", "Ano de Nascimento"};
+//            String[] cabecalho = {"Cliente", "Serviço", "Valor"};
 //
 //            //percore o vetor colocando cada elemento dentro de uma célula
 //            for (String s : cabecalho) {
@@ -112,13 +132,10 @@
 //            //adiciona a tabela ao documento
 //            document.add(table);
 //
-//
 //            document.close();
-//
 //
 //        } catch (IOException | SQLException e) {
 //            e.printStackTrace();
 //        }
 //    }
 //}
-//

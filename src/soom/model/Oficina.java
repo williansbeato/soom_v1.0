@@ -2,6 +2,7 @@ package soom.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.sqlite.ExtendedCommand;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -81,19 +82,19 @@ public class Oficina {
     }
 
 
-    public Carro insereCarro(String marca, String modelo) throws SQLException {
-
-        Carro ca = new Carro();
-
-        ca.setMarca(marca);
-        ca.setModelo(modelo);
-
-        carroDAO.insere(ca);
-
-        carros.add(ca);
-
-        return ca;
-    }
+//    public Carro insereCarro(String marca, String modelo) throws SQLException {
+//
+//        Carro ca = new Carro();
+//
+//        ca.setMarca(marca);
+//        ca.setModelo(modelo);
+//
+//        carroDAO.insere(ca);
+//
+//        carros.add(ca);
+//
+//        return ca;
+//    }
 
     public ObservableList listaCarros() throws SQLException {
 
@@ -103,7 +104,41 @@ public class Oficina {
 
         return carros;
     }
+////////////////////////tesde de delete
 
+//    public ObservableList pesquisaCarros() throws SQLException {
+//
+//
+//        carros.clear();
+//        carros.addAll(carroDAO.listaTudo());
+//
+//        return carros;
+//    }
+
+
+
+    public Carro insereCarro(Carro c   ) throws SQLException {
+        carroDAO.insere(c);
+
+        return c;
+    }
+
+    public Carro deletaCarro(Carro c) throws SQLException {
+        carroDAO.delete(c);
+
+        return  c;
+    }
+
+    public Carro updateCarro(Carro c) throws SQLException {
+        carroDAO.update(c);
+
+        return  c;
+    }
+
+
+
+
+///////////////////////////
 
 
     public Peca inserePeca(String categoria, String nome) throws SQLException {

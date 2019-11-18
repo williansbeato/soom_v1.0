@@ -59,10 +59,10 @@
 <!--          mudar nome do ltwClientes para cbClientes-->
             </VBox>
 
-            <VBox>
-                <Label text="Carros"/>
-                <ListView fx:id="cbCarros" />
-            </VBox>
+<!--            <VBox>-->
+<!--                <Label text="Carros"/>-->
+<!--                <ListView fx:id="ltwCarros" />-->
+<!--            </VBox>-->
 
             <VBox>
                 <Label text="Servicos"/>

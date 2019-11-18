@@ -19,7 +19,7 @@ public class JanelaPrincipal {
     @FXML
     private ComboBox<Cliente> ltwClientes;
     @FXML
-    private ListView<Carro> cbCarros;
+    private ListView<Carro> ltwCarros;
 
 ///
 
@@ -49,6 +49,9 @@ public class JanelaPrincipal {
     private Button btFechar;
     @FXML
     private Button btIncluir;
+    @FXML
+    private Button btdeletecarro;
+
 
 
 
@@ -70,8 +73,11 @@ public class JanelaPrincipal {
         try {
             ltwClientes.setItems(Oficina.getInstance().listaClientes());
             ltwServicos.setItems(Oficina.getInstance().listaServicos());
+           ///////////////
 
+            //ltwCarros.setItems(Oficina.getInstance().listaCarros());
 
+///////////////////
 
 ////
 //            tbcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
@@ -98,13 +104,15 @@ public class JanelaPrincipal {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_cliente.fxml"));
 
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/test.fxml"));
+
         try {
 
             Pane root = loader.load();
 
             dialog.getDialogPane().setContent(root);
 
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
             dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
            Optional<ButtonType> ret = dialog.showAndWait();
@@ -128,7 +136,9 @@ public class JanelaPrincipal {
 
         Dialog<ButtonType> dialog = new Dialog<>();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_carro.fxml"));
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_cliente.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/test.fxml"));
 
         try {
 
@@ -136,23 +146,22 @@ public class JanelaPrincipal {
 
             dialog.getDialogPane().setContent(root);
 
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
+            // dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
             Optional<ButtonType> ret = dialog.showAndWait();
 
-            if (ret.isPresent() && ret.get()==ButtonType.OK){
-
-                JanelaCadastroCarro cadastroCarro = loader.getController();
-
-                cadastroCarro.processaResultado();
-            }
+            //if (ret.isPresent() && ret.get()==ButtonType.OK){
+//
+            //JanelaCadastroCliente cadastroCliente = loader.getController();
+//
+//               cadastroCliente.processaResultado();
+            //}
 
 
         }catch (IOException e){
             e.printStackTrace();
         }
-
 
     }
 
@@ -244,9 +253,9 @@ public class JanelaPrincipal {
 
     /////////////teste
     @FXML
-    public void mostrarCarro(){
+    public void listarCarro(){
 
-        Carro carro = cbCarros.getSelectionModel().getSelectedItem();
+        Carro carro = ltwCarros.getSelectionModel().getSelectedItem();
 
 //        if (carro != null){
 //
@@ -254,12 +263,9 @@ public class JanelaPrincipal {
     }
 //
 //    @FXML
-//    public void excluirServicoOrcamento(){
+//    public void deletaCarro(){
 //
-//        Servico servico = ltwServicos.getSelectionModel().getSelectedItem();
-//        if (servico == null) {
-//            Oficina.getInstance().delete(ltwServicos.getSelectionModel().getSelectedItem());
-//        }
+//
 //
 //    }
 

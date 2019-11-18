@@ -1,26 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
 
-<DialogPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="soom.control.JanelaCadastroCarro"
-            prefHeight="200.0" prefWidth="300.0">
+<!--<BorderPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="soom.control.JanelaCadastroCarro">-->
 
 
-    <content>
-        <GridPane>
-            <Label GridPane.rowIndex="0" GridPane.columnIndex="0" text="Marca:" labelFor="$tfMarca"/>
-            <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="tfMarca"/>
 
-            <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Modelo:" labelFor="$tfModelo"/>
-            <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="tfModelo"/>
 
-        </GridPane>
-    </content>
 
-</DialogPane>
+<!--&lt;!&ndash;    <content>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        <GridPane>&ndash;&gt;-->
+<!--&lt;!&ndash;            <Label GridPane.rowIndex="0" GridPane.columnIndex="0" text="Marca:" labelFor="$tfMarca"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="tfMarca"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Modelo:" labelFor="$tfModelo"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="tfModelo"/>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        </GridPane>&ndash;&gt;-->
+
+
+
+
+
+
+
+
+<!--        &lt;!&ndash;        comentado&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <VBox>&ndash;&gt;-->
+<!--    <top>-->
+<!--        <VBox>-->
+<!--&lt;!&ndash;            <Label text="Id:" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <TextField fx:id="tfId" />&ndash;&gt;-->
+
+<!--            <Label text="Marca:" />-->
+<!--            <TextField fx:id="tfMarca" />-->
+
+<!--            <Label text="Modelo:" />-->
+<!--            <TextField fx:id="tfModelo" />-->
+<!--&lt;!&ndash;                < fx:id="btdeletecarro" onAction="#deletarCarro" text="Deletar" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <Button text="Deletar" fx:id="btdeletecarro" onAction="#deletarCarro" prefHeight="30.0" prefWidth="154.0" />&ndash;&gt;-->
+
+<!--            <HBox>-->
+<!--                <Button fx:id="btdeletecarro" onAction="#deletarCarro" text="Deletar" />-->
+<!--                <Button fx:id="btupdatecarro" onAction="#updateCarro" text="Update" />-->
+<!--                <Button fx:id="btinsereCarro" onAction="#insereCarro" text="Insere" />-->
+<!--            </HBox>-->
+
+
+
+<!--&lt;!&ndash;                <Button text=">" fx:id="btIncluir" onAction="#incluirServicoOrcamento" />&ndash;&gt;-->
+<!--         </VBox>-->
+<!--    </top>-->
+
+<!--    <center>-->
+<!--        <TableView fx:id="tbwCarro" prefHeight="200.0" prefWidth="300.0">-->
+<!--                <columns>-->
+<!--                    <TableColumn fx:id="tbcId" text="Id" />-->
+<!--                    <TableColumn fx:id="tbcModelo" prefWidth="212.0" text="Marca" />-->
+<!--                    <TableColumn fx:id="tbcMarca" prefWidth="207.0" text="Modelo" />-->
+<!--                </columns>-->
+<!--         <columnResizePolicy>-->
+<!--            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />-->
+<!--         </columnResizePolicy>-->
+<!--            </TableView>-->
+<!--    </center>-->
+<!--&lt;!&ndash;        </VBox>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        para aqui&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;    </content>&ndash;&gt;-->
+
+<!--</BorderPane>-->

@@ -9,6 +9,7 @@ public interface CarroDAO {
 
     Carro buscarId(int id) throws SQLException;
     List<Carro> lista() throws SQLException;
+    //List<Carro> listaTudo() throws SQLException;
 
     void update(Carro c) throws SQLException;
     void delete(Carro c) throws SQLException;

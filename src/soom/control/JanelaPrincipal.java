@@ -104,8 +104,6 @@ public class JanelaPrincipal {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_cliente.fxml"));
 
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/test.fxml"));
-
         try {
 
             Pane root = loader.load();
@@ -113,20 +111,11 @@ public class JanelaPrincipal {
             dialog.getDialogPane().setContent(root);
 
             dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-
-           Optional<ButtonType> ret = dialog.showAndWait();
-
-           if (ret.isPresent() && ret.get()==ButtonType.OK){
-
-               JanelaCadastroCliente cadastroCliente = loader.getController();
-
-               cadastroCliente.processaResultado();
-           }
-
+            Optional<ButtonType> ret = dialog.showAndWait();
 
         }catch (IOException e){
             e.printStackTrace();
+
         }
 
     }
@@ -138,7 +127,7 @@ public class JanelaPrincipal {
 
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_cliente.fxml"));
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/test.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_carro.fxml"));
 
         try {
 
@@ -179,23 +168,13 @@ public class JanelaPrincipal {
 
             dialog.getDialogPane().setContent(root);
 
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
             Optional<ButtonType> ret = dialog.showAndWait();
-
-            if (ret.isPresent() && ret.get()==ButtonType.OK){
-
-                JanelaCadastroPeca cadastroPeca = loader.getController();
-
-                cadastroPeca.processaResultado();
-            }
-
 
         }catch (IOException e){
             e.printStackTrace();
-        }
 
+        }
 
     }
 
@@ -206,26 +185,20 @@ public class JanelaPrincipal {
         Dialog<ButtonType> dialog = new Dialog<>();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/janela_cadastro_servico.fxml"));
+
         try {
+
             Pane root = loader.load();
+
             dialog.getDialogPane().setContent(root);
 
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
 
-             Optional<ButtonType> ret = dialog.showAndWait();
-
-             if (ret.isPresent() && ret.get()==ButtonType.OK){
-                 JanelaCadastroServico cadastroServico = loader.getController();
-
-                 cadastroServico.processaResultado();
-
-             }
+            Optional<ButtonType> ret = dialog.showAndWait();
 
         }catch (IOException e){
             e.printStackTrace();
         }
-
     }
 
     @FXML

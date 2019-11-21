@@ -46,6 +46,7 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
             for(Servico servico:o.getServicos()){
                 stm.setInt(1,id);
                 stm.setInt(2,servico.getId());
+               /////test
                 stm.setDouble(3,servico.getValor());
 
                 stm.executeUpdate();
@@ -82,7 +83,7 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
             double valor = rs.getDouble("valor");
             LocalDateTime data = rs.getTimestamp("data").toLocalDateTime();
 
-            Cliente cliente = clienteDAO.buscaID(idCliente);
+            Cliente cliente = clienteDAO.buscaId(idCliente);
 
             orcamento = new Orcamento();
             orcamento.setId(idOrcamento);
@@ -98,7 +99,7 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
                 int idServico = rsItens.getInt("idServico");
                 double valorServico = rsItens.getDouble("valor");
 
-                Servico servico = servicoDAO.buscarID(idServico);
+                Servico servico = servicoDAO.buscarId(idServico);
                 servico.setValor(valorServico);
 
                 orcamento.adicionaServico(servico);
@@ -141,7 +142,7 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
             double valor = rs.getDouble("valor");
             LocalDateTime data = rs.getTimestamp("data").toLocalDateTime();
 
-            Cliente cliente = clienteDAO.buscaID(idCliente);
+            Cliente cliente = clienteDAO.buscaId(idCliente);
 
             Orcamento orcamento = new Orcamento();
             orcamento.setId(idOrcamento);
@@ -159,7 +160,7 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
                 int idServico = rsItens.getInt("idServico");
                 double valorServico = rsItens.getDouble("valor");
 
-                Servico servico = servicoDAO.buscarID(idServico);
+                Servico servico = servicoDAO.buscarId(idServico);
                 servico.setValor(valorServico);
 
                 orcamento.adicionaServico(servico);

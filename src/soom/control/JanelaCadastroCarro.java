@@ -28,8 +28,6 @@ import java.util.List;
 
 public class JanelaCadastroCarro {
 
-
-
     @FXML
     private TextField tfId;
 
@@ -57,8 +55,6 @@ public class JanelaCadastroCarro {
     @FXML
     private TableColumn<Carro, String> tbcModelo;
 
-
-
     @FXML
     private TableColumn<Carro, Integer> tbcId;
 
@@ -78,54 +74,29 @@ public class JanelaCadastroCarro {
 
     private final CarroDAOImpl carroDAO = new CarroDAOImpl();
 
-    //////
     public void initialize() throws SQLException {
-
-//        tbcId.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        tbcModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-//        tbcMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
-//        alteraComponentes(true);
-
-//        try {
-//
-//            tbwCarro.setItems(Oficina.getInstance().listaCarros());
-//
-//
-//        } catch (SQLException e) {
-//
-//            e.printStackTrace();
-//            Alert a = new Alert(Alert.AlertType.ERROR, e.getMessage());
-//            a.showAndWait();
-//
-//        }
-
-
         carregaTela();
 
         tbwCarro.getSelectionModel().selectedItemProperty().addListener(((observableValue, carro, t1) -> seleItemTBWCarros(t1)));
 
     }
 
-
     public void carregaTela() throws SQLException {
-
         tbcMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
         tbcModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-
         tbwCarro.setItems(Oficina.getInstance().listaCarros());
 
     }
 
+    public void seleItemTBWCarros(Carro carro) {
 
-
-    public void  seleItemTBWCarros(Carro carro){
-
-        if(carro != null) {
+        if (carro != null) {
             System.out.println("Carro selecionado: " + carro.toString());
             lbId.setText(String.valueOf(carro.getId()));
             lbMarca.setText(carro.getMarca());
             lbModelo.setText(carro.getModelo());
-        }else{
+
+        } else {
             lbId.setText("");
             lbMarca.setText("");
             lbModelo.setText("");
@@ -133,128 +104,61 @@ public class JanelaCadastroCarro {
         }
     }
 
-//////////
-
-
-//    public void processaResultado() {
-//
-//        String marca = tfMarca.getText();
-//        String modelo = tfModelo.getText();
-//
-//        try {
-//            Oficina.getInstance().insereCarro(marca, modelo);
-//
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            Alert a = new Alert(Alert.AlertType.ERROR, e.getMessage());
-//            a.showAndWait();
-//        }
-//    }
-
-
-//    @FXML
-//    public  void insereCarro(){
-//        try {
-//            Carro carro = tbwCarro.getSelectionModel().getSelectedItem();
-//
-//            Oficina.getInstance().insereCarro(carro);
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            Alert a = new Alert(Alert.AlertType.ERROR, e.getMessage());
-//            a.showAndWait();
-//        }
-//    }
-
-
     @FXML
-    public  void insereCarro() throws IOException, SQLException {
+    public void insereCarro() throws IOException, SQLException {
+        Carro carro = new Carro();
 
-            Carro carro = new Carro();
+        boolean btConfirmaClick = showJanelinhaCarro(carro);
 
-            boolean btConfirmaClick = showJanelinhaCarro(carro);
+        if (btConfirmaClick) {
+            Oficina.getInstance().insereCarro(carro);
+            carregaTela();
 
-            if (btConfirmaClick) {
-                Oficina.getInstance().insereCarro(carro);
-                carregaTela();
-            }
+        }
+
     }
-
-
 
     @FXML
     public void deletarCarro() throws SQLException {
 
-            Carro carro = tbwCarro.getSelectionModel().getSelectedItem();
+        Carro carro = tbwCarro.getSelectionModel().getSelectedItem();
 
-            if(carro != null) {
-                Oficina.getInstance().deletaCarro(carro);
-                carregaTela();
-            } else {
+        if (carro != null) {
+            Oficina.getInstance().deletaCarro(carro);
+            carregaTela();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Selecione um Carro!!!");
+            alert.show();
 
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Selecione um Carro!!!");
-                alert.show();
-            }
+        }
     }
-
 
     @FXML
     public void updateCarro() throws IOException, SQLException {
 
         Carro carro = tbwCarro.getSelectionModel().getSelectedItem();
 
-        if (carro != null){
+        if (carro != null) {
             boolean btConfirmaClick = showJanelinhaCarro(carro);
-            if (btConfirmaClick){
-                //carroDAO.update(carro);
+            if (btConfirmaClick) {
                 Oficina.getInstance().updateCarro(carro);
-                System.out.println("Carro updatado: " +carro.toString() );
+                System.out.println("Carro updatado: " + carro.toString());
 
                 carregaTela();
+
             }
 
-            //20min de video
         } else {
-
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Selecione um Carro!!!");
             alert.show();
+
         }
-
-
-
 
     }
 
-//    @FXML
-//    public void updateCarro() throws IOException, SQLException {
-//
-//            Carro carro = tbwCarro.getSelectionModel().getSelectedItem();
-//
-//            if (carro != null){
-//                boolean btConfirmaClick = showJanelinhaCarro(carro);
-//                if (btConfirmaClick){
-//                    Oficina.getInstance().updateCarro(carro);
-//                    System.out.println("Carro updatado: " + carro.toString());
-//
-//                    carregaTela();
-//                }
-//            } else {
-//
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setContentText("Selecione um Carro!!!");
-//                alert.show();
-//            }
-//
-//
-//
-//
-//    }
-
-
-    public boolean showJanelinhaCarro(Carro carro) throws IOException{
+    public boolean showJanelinhaCarro(Carro carro) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
 
@@ -266,7 +170,6 @@ public class JanelaCadastroCarro {
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
 
-
         JanelinhaCadastroCarro janelinha = loader.getController();
         janelinha.setDialogStage(dialogStage);
         janelinha.setCarro(carro);
@@ -276,53 +179,4 @@ public class JanelaCadastroCarro {
         return janelinha.isBtConfirmaClick();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    private void alteraComponentes(boolean estado){
-//        tfMarca.setDisable(estado);
-//        tfModelo.setDisable(estado);
-//        tbwCarro.setDisable(estado);
-//
-//        tbwCarro.getSelectionModel().clearSelection();
-//
-////        tbcModelo.setDisable(estado);
-////        tbcMarca.setDisable(estado);
-////        btdeletecarro.setDisable(estado);
-////        //btIniciar.setDisable(!estado);
-//    }
-
-
 }
-//    @FXML
-//    private TableView<Carro> ;
-//
-//    @FXML
-//    private TableColumn<Carro, String> tbcModelo;
-//
-//    @FXML
-//    private TableColumn<Carro, String> tbcMarca;
-//
-//    @FXML
-//    private Button btdeletecarro;
-
-
-
-

@@ -33,9 +33,9 @@
 
                         <MenuItem text="Cadastra Serviços" onAction="#cadastraServico"/>
 
-                        <MenuItem text=" Cadastra Carro" onAction="#cadastraCarro"/>
+                        <MenuItem text="Cadastra Carro" onAction="#cadastraCarro"/>
 
-                        <MenuItem text=" Cadastra Peças" onAction="#cadastraPeca"/>
+                        <MenuItem text="Cadastra Peças" onAction="#cadastraPeca"/>
 
                     </items>
                 </Menu>

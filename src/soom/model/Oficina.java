@@ -56,137 +56,111 @@ public class Oficina {
 
         return instance;
     }
+//Cliente
+    public ObservableList listaClientes() throws SQLException {
+    clientes.clear();
+    clientes.addAll(clienteDAO.lista());
 
-    public Cliente insereCliente(String nome, String telefone) throws SQLException {
+    return clientes;
+}
 
-        Cliente c = new Cliente();
-
-        c.setNome(nome);
-        c.setTelefone(telefone);
-
+    public Cliente insereCliente(Cliente c) throws SQLException {
         clienteDAO.insere(c);
 
-        clientes.add(c);
+        return c;
+    }
+
+    public Cliente deletaCliente(Cliente c) throws SQLException {
+        clienteDAO.delete(c);
 
         return c;
-
     }
 
-    public  ObservableList listaClientes() throws SQLException {
+    public Cliente updateCliente(Cliente c) throws SQLException {
+        clienteDAO.update(c);
 
-
-        clientes.clear();
-        clientes.addAll(clienteDAO.lista());
-
-        return clientes;
+        return  c;
     }
-
-
-//    public Carro insereCarro(String marca, String modelo) throws SQLException {
-//
-//        Carro ca = new Carro();
-//
-//        ca.setMarca(marca);
-//        ca.setModelo(modelo);
-//
-//        carroDAO.insere(ca);
-//
-//        carros.add(ca);
-//
-//        return ca;
-//    }
-
+//Cliente
+//Carro
     public ObservableList listaCarros() throws SQLException {
-
-
         carros.clear();
         carros.addAll(carroDAO.lista());
 
         return carros;
     }
-////////////////////////tesde de delete
 
-//    public ObservableList pesquisaCarros() throws SQLException {
-//
-//
-//        carros.clear();
-//        carros.addAll(carroDAO.listaTudo());
-//
-//        return carros;
-//    }
+    public Carro insereCarro(Carro ca) throws SQLException {
+        carroDAO.insere(ca);
 
-
-
-    public Carro insereCarro(Carro c   ) throws SQLException {
-        carroDAO.insere(c);
-
-        return c;
+        return ca;
     }
 
-    public Carro deletaCarro(Carro c) throws SQLException {
-        carroDAO.delete(c);
+    public Carro deletaCarro(Carro ca) throws SQLException {
+        carroDAO.delete(ca);
 
-        return  c;
+        return  ca;
     }
 
-    public Carro updateCarro(Carro c) throws SQLException {
-        carroDAO.update(c);
+    public Carro updateCarro(Carro ca) throws SQLException {
+        carroDAO.update(ca);
 
-        return  c;
+        return  ca;
+    }
+// Carro
+
+//Peça
+    public ObservableList listaPecas() throws SQLException {
+     pecas.clear();
+     pecas.addAll(pecaDAO.lista());
+
+     return pecas;
     }
 
-
-
-
-///////////////////////////
-
-
-    public Peca inserePeca(String categoria, String nome) throws SQLException {
-
-        Peca p = new Peca();
-
-        p.setCategoria(categoria);
-        p.setNome(nome);
-
+    public Peca inserePeca(Peca p) throws SQLException {
         pecaDAO.insere(p);
-
-        pecas.add(p);
 
         return p;
     }
 
-    public ObservableList listaPecas() throws SQLException {
+    public Peca deletaPeca(Peca p) throws SQLException {
+        pecaDAO.delete(p);
 
-
-        pecas.clear();
-        pecas.addAll(pecaDAO.lista());
-
-        return pecas;
+        return p;
     }
 
+    public Peca updatePeca(Peca p) throws SQLException {
+        pecaDAO.update(p);
 
-
-
-
-
-    public void insereServico(String categoria, String nome, Double valor) throws SQLException {
-        Servico s = new Servico();
-        s.setCategoria(categoria);
-        s.setNome(nome);
-        s.setValor(valor);
-
-        servicoDAO.insere(s);
-        servicos.add(s);
+        return p;
     }
-
-    public ObservableList<Servico> listaServicos() throws SQLException {
+//Peça
+    //Servico
+    public ObservableList listaServicos() throws SQLException {
         servicos.clear();
         servicos.addAll(servicoDAO.lista());
 
         return servicos;
     }
 
+    public Servico insereServico(Servico s) throws SQLException {
+        servicoDAO.insere(s);
 
+        return s;
+    }
+
+    public Servico deletaServico(Servico s) throws SQLException {
+        servicoDAO.delete(s);
+
+        return s;
+    }
+
+    public Servico updateServico(Servico s) throws SQLException {
+        servicoDAO.update(s);
+
+        return s;
+    }
+//Serviço
     public ObservableList<Orcamento> listaOrcamentos() throws SQLException{
 
         orcamentos.clear();
@@ -253,16 +227,6 @@ public class Oficina {
         return -1;
     }
 
-//    public boolean adicionaServico(Servico s){
-//        if (orcamentoAtual != null){
-//            orcamentoAtual.adicionaServico(s);
-//
-//            return true;
-//        }
-//        return false;
-//    }
-
-
     public boolean adicionaClienteOrcamento(Cliente c){
 
         if (orcamentoAtual != null){
@@ -274,18 +238,4 @@ public class Oficina {
         return false;
     }
 
-//teste para deletar
-//    public boolean delete(Servico s) {
-//
-//
-//        if (orcamentoAtual != null){
-//            orcamentoAtual.setServicos(s);
-//
-//            return true;
-//        }
-//        return false;
-//
-//    }
-
-    ///teste termina aqui
 }

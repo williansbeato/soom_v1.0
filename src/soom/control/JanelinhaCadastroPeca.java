@@ -6,21 +6,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import soom.model.Carro;
+import soom.model.Peca;
 
-public class JanelinhaCadastroCarro {
+public class JanelinhaCadastroPeca {
 
-    @FXML
-    private TextField tfMarca;
 
     @FXML
-    private TextField tfModelo;
+    private TextField tfCategoria;
 
     @FXML
-    private Label lbModelo;
+    private TextField tfNome;
 
     @FXML
-    private Label lbMarca;
+    private Label lbCategoria;
+
+    @FXML
+    private Label lbNome;
 
     @FXML
     private Button btConfirmar;
@@ -30,7 +31,7 @@ public class JanelinhaCadastroCarro {
 
     private Stage dialogStage;
     private boolean btConfirmaClick = false;
-    private Carro carro;
+    private Peca peca;
 
     public Stage getDialogStage() {
         return dialogStage;
@@ -48,15 +49,15 @@ public class JanelinhaCadastroCarro {
         this.btConfirmaClick = btConfirmaClick;
     }
 
-    public Carro getCarro() {
-        return carro;
+    public Peca getPeca() {
+        return peca;
     }
 
-    public void setCarro(Carro carro) {
-        this.carro = carro;
+    public void setPeca(Peca peca) {
+        this.peca = peca;
 
-        this.tfMarca.setText(carro.getMarca());
-        this.tfModelo.setText(carro.getModelo());
+        this.tfCategoria.setText(peca.getCategoria());
+        this.tfNome.setText(peca.getNome());
 
     }
 
@@ -64,8 +65,8 @@ public class JanelinhaCadastroCarro {
     public void hbtConfirmar(){
 
         if (validaEntrada()){
-            carro.setMarca(tfMarca.getText());
-            carro.setModelo(tfModelo.getText());
+            peca.setCategoria(tfCategoria.getText());
+            peca.setNome(tfNome.getText());
 
             btConfirmaClick = true;
             dialogStage.close();
@@ -83,12 +84,12 @@ public class JanelinhaCadastroCarro {
     private boolean validaEntrada(){
         String errorMessage = "";
 
-        if (tfModelo.getText() == null || tfModelo.getText().length() == 0) {
-            errorMessage += "Modelo inválido!\n\n";
+        if (tfCategoria.getText() == null || tfCategoria.getText().length() == 0) {
+            errorMessage += "Categoria inválido!\n\n";
 
         }
-        if (tfMarca.getText() == null || tfMarca.getText().length() == 0) {
-            errorMessage += "Marca inválido!\n\n";
+        if (tfNome.getText() == null || tfNome.getText().length() == 0) {
+            errorMessage += "Nome inválido!\n\n";
 
         }
         if (errorMessage.length() == 0){

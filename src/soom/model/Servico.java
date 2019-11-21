@@ -32,7 +32,7 @@ public class Servico {
         this.nome = nome;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 

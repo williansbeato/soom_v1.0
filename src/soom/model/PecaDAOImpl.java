@@ -11,7 +11,8 @@ public class PecaDAOImpl implements PecaDAO {
     private static String INSERE = "INSERT INTO pecas(categoria,nome) VALUES (?,?)";
     private static String LISTA = "SELECT * FROM pecas";
     private static String BUSCA_ID = "SELECT * FROM pecas where id=?";
-
+    private static String DELETA = "DELETE FROM pecas WHERE id=?";
+    private static String UPDATE = "UPDATE pecas SET categoria = ?, nome = ? WHERE id = ?";
 
     @Override
     public void insere(Peca p) throws SQLException {
@@ -61,8 +62,6 @@ public class PecaDAOImpl implements PecaDAO {
             p.setCategoria(categoria);
             p.setNome(nome);
 
-
-
         }
 
         rs.close();
@@ -70,7 +69,6 @@ public class PecaDAOImpl implements PecaDAO {
         con.close();
 
         return p;
-
 
     }
 
@@ -110,11 +108,42 @@ public class PecaDAOImpl implements PecaDAO {
 
     @Override
     public void update(Peca p) throws SQLException {
+        try {
+            Connection con = Conexao.getConnection();
 
+            PreparedStatement stm = con.prepareStatement(UPDATE);
+
+            stm.setString(1,p.getCategoria());
+            stm.setString(2,p.getNome());
+            stm.setInt(3,p.getId());
+
+            stm.execute();
+            stm.close();
+            con.close();
+
+        } catch (SQLException e){
+            e.getMessage();
+
+        }
     }
 
     @Override
     public void delete(Peca p) throws SQLException {
+
+        try {
+            Connection con = Conexao.getConnection();
+
+            PreparedStatement stm = con.prepareStatement(DELETA);
+
+            stm.setInt(1, p.getId());
+
+            stm.execute();
+            stm.close();
+            con.close();
+
+        }catch (SQLException e){
+            e.getMessage();
+        }
 
     }
 

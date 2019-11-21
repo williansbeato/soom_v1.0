@@ -6,41 +6,31 @@ import java.util.List;
 
 public class ServicoDAOImpl implements ServicoDAO {
 
-
     private static String INSERE = "INSERT INTO servicos(categoria,nome,valor) VALUES (?,?,?)";
     private static String LISTA = "SELECT * FROM servicos";
     private static String BUSCA_ID = "SELECT * FROM servicos where id=?";
+    private static String DELETA = "DELETE FROM servicos WHERE id=?";
+    private static String UPDATE = "UPDATE servicos SET categoria = ?, nome = ?, valor = ? WHERE id = ?";
 
 
     @Override
     public void insere(Servico s) throws SQLException {
 
         Connection con = Conexao.getConnection();
-
         PreparedStatement stm = con.prepareStatement(INSERE, Statement.RETURN_GENERATED_KEYS);
 
         stm.setString(1,s.getCategoria());
         stm.setString(2,s.getNome());
         stm.setDouble(3,s.getValor());
 
-        stm.executeUpdate();
-
-        ResultSet rs = stm.getGeneratedKeys();
-        rs.next();
-
-        int id = rs.getInt(1);
-
-        s.setId(id);
-
-        rs.close();
+        stm.execute();
         stm.close();
         con.close();
-
 
     }
 
     @Override
-    public Servico buscarID(int id) throws SQLException {
+    public Servico buscarId(int id) throws SQLException {
 
         Servico s = null;
 
@@ -53,7 +43,6 @@ public class ServicoDAOImpl implements ServicoDAO {
         ResultSet rs = stm.executeQuery();
 
         while (rs.next()){
-
             String categoria = rs.getString("categoria");
             String nome = rs.getString("nome");
             Double valor = rs.getDouble("valor");
@@ -62,7 +51,6 @@ public class ServicoDAOImpl implements ServicoDAO {
             s.setCategoria(categoria);
             s.setNome(nome);
             s.setValor(valor);
-
 
         }
 
@@ -112,10 +100,45 @@ public class ServicoDAOImpl implements ServicoDAO {
     @Override
     public void update(Servico s) throws SQLException {
 
+        try {
+            Connection con = Conexao.getConnection();
+
+            PreparedStatement stm = con.prepareStatement(UPDATE);
+
+            stm.setString(1,s.getCategoria());
+            stm.setString(2,s.getNome());
+            stm.setDouble(3,s.getValor());
+            stm.setInt(4,s.getId());
+
+            stm.execute();
+            stm.close();
+            con.close();
+
+        } catch (SQLException e){
+            e.getMessage();
+
+        }
+
     }
 
     @Override
     public void delete(Servico s) throws SQLException {
 
+        try {
+            Connection con = Conexao.getConnection();
+
+            PreparedStatement stm = con.prepareStatement(DELETA);
+
+            stm.setInt(1, s.getId());
+
+            stm.execute();
+            stm.close();
+            con.close();
+
+        }catch (SQLException e){
+            e.getMessage();
+        }
+
     }
+
 }

@@ -7,20 +7,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import soom.model.Carro;
+import soom.model.Cliente;
 
-public class JanelinhaCadastroCarro {
-
-    @FXML
-    private TextField tfMarca;
+public class JanelinhaCadastroCliente {
 
     @FXML
-    private TextField tfModelo;
+    private TextField tfNome;
 
     @FXML
-    private Label lbModelo;
+    private TextField tfTelefone;
 
     @FXML
-    private Label lbMarca;
+    private Label lbNome;
+
+    @FXML
+    private Label lbTelefone;
 
     @FXML
     private Button btConfirmar;
@@ -30,7 +31,7 @@ public class JanelinhaCadastroCarro {
 
     private Stage dialogStage;
     private boolean btConfirmaClick = false;
-    private Carro carro;
+    private Cliente cliente;
 
     public Stage getDialogStage() {
         return dialogStage;
@@ -48,15 +49,15 @@ public class JanelinhaCadastroCarro {
         this.btConfirmaClick = btConfirmaClick;
     }
 
-    public Carro getCarro() {
-        return carro;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setCarro(Carro carro) {
-        this.carro = carro;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
 
-        this.tfMarca.setText(carro.getMarca());
-        this.tfModelo.setText(carro.getModelo());
+        this.tfNome.setText(cliente.getNome());
+        this.tfTelefone.setText(cliente.getTelefone());
 
     }
 
@@ -64,8 +65,8 @@ public class JanelinhaCadastroCarro {
     public void hbtConfirmar(){
 
         if (validaEntrada()){
-            carro.setMarca(tfMarca.getText());
-            carro.setModelo(tfModelo.getText());
+            cliente.setNome(tfNome.getText());
+            cliente.setTelefone(tfTelefone.getText());
 
             btConfirmaClick = true;
             dialogStage.close();
@@ -83,12 +84,12 @@ public class JanelinhaCadastroCarro {
     private boolean validaEntrada(){
         String errorMessage = "";
 
-        if (tfModelo.getText() == null || tfModelo.getText().length() == 0) {
-            errorMessage += "Modelo inválido!\n\n";
+        if (tfNome.getText() == null || tfTelefone.getText().length() == 0) {
+            errorMessage += "Nome inválido!\n\n";
 
         }
-        if (tfMarca.getText() == null || tfMarca.getText().length() == 0) {
-            errorMessage += "Marca inválido!\n\n";
+        if (tfNome.getText() == null || tfTelefone.getText().length() == 0) {
+            errorMessage += "Telefone inválido!\n\n";
 
         }
         if (errorMessage.length() == 0){

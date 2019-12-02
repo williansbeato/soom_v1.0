@@ -1,5 +1,6 @@
 package soom.control;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -12,14 +13,20 @@ import soom.model.Servico;
 //import soom.model.Ferramenta;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.scene.control.Label;
 
 public class JanelaPrincipal {
 
     @FXML
     private ComboBox<Cliente> ltwClientes;
     @FXML
-    private ListView<Carro> ltwCarros;
+    private ComboBox<Carro> ltwCarros;
 
 ///
 
@@ -40,7 +47,7 @@ public class JanelaPrincipal {
 
 
     @FXML
-    private ListView<Servico> ltwServicos;
+    private ComboBox<Servico> ltwServicos;
     @FXML
     private ListView<Servico> ltwServicosOrcamento;
     @FXML
@@ -67,7 +74,10 @@ public class JanelaPrincipal {
 //    @FXML
 //    private TableColumn<Servico, Double> tbcValorServico;
 
+    @FXML
+    private Label lbRelogio;
 
+    private DateTimeFormatter df=DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public void initialize(){
         try {
@@ -75,7 +85,15 @@ public class JanelaPrincipal {
             ltwServicos.setItems(Oficina.getInstance().listaServicos());
            ///////////////
 
-            //ltwCarros.setItems(Oficina.getInstance().listaCarros());
+            ltwCarros.setItems(Oficina.getInstance().listaCarros());
+            //
+            Task<Void> relogio = controleRelogio();
+            lbRelogio.textProperty().bind(relogio.messageProperty());
+            Thread backgroundThread = new Thread(relogio);
+
+            backgroundThread.setDaemon(true);
+
+            backgroundThread.start();
 
 ///////////////////
 
@@ -95,6 +113,24 @@ public class JanelaPrincipal {
 
         alteraComponentes(true);
 
+    }
+
+
+    public Task<Void> controleRelogio(){
+
+        return new Task<Void>(){
+            @Override
+            protected Void call() throws Exception{
+                while (true){
+                    String str = df.format(LocalDateTime.now());
+
+                    this.updateMessage(str);
+                    Thread.sleep(1000);
+                }
+
+            }
+
+        };
     }
 
     @FXML
@@ -274,7 +310,18 @@ public class JanelaPrincipal {
         }
     }
 
+    /////////////
+    @FXML
+    public void adicionaCarroOrcamento(){
 
+        Carro carro = ltwCarros.getSelectionModel().getSelectedItem();
+
+        if (carro != null){
+
+            Oficina.getInstance().adicionaCarroOrcamento(carro);
+        }
+    }
+////////////
     @FXML
     public void listaOrcamentos(){
 
@@ -286,7 +333,7 @@ public class JanelaPrincipal {
 
             dialog.getDialogPane().setContent(root);
 
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
 
             dialog.showAndWait();
 
@@ -302,9 +349,19 @@ public class JanelaPrincipal {
         ltwServicosOrcamento.setDisable(estado);
         ltwServicos.setDisable(estado);
         ltwClientes.setDisable(estado);
+    //
+        ltwCarros.setDisable(estado);
+        lbRelogio.setDisable(estado);
+    //
+
 
         ltwServicos.getSelectionModel().clearSelection();
         ltwClientes.getSelectionModel().clearSelection();
+
+        //
+        ltwCarros.getSelectionModel().clearSelection();
+
+        //
 
         btFechar.setDisable(estado);
         btIncluir.setDisable(estado);

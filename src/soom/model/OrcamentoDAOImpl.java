@@ -7,7 +7,8 @@ import java.util.List;
 
 public class OrcamentoDAOImpl implements OrcamentoDAO {
 
-    private static String INSERE = "INSERT INTO orcamentos(valor,data,idCliente) VALUES(?,?,?)";
+    //private static String INSERE = "INSERT INTO orcamentos(valor,data,idCliente) VALUES(?,?,?)";
+    private static String INSERE = "INSERT INTO orcamentos(valor,data,idCliente,idCarro) VALUES(?,?,?,?)";
     private static String INSERE_ORCAMENTO_SERVICO = "INSERT INTO orcamentoservicos(idOrcamento,idServico,valor) VALUES(?,?,?)";
 
     private static String LISTA = "SELECT * FROM orcamentos";
@@ -18,12 +19,14 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
 
         Connection con = Conexao.getConnection();
 
-        PreparedStatement stm = con.prepareStatement(INSERE, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement stm = con.prepareStatement(INSERE);
 
         stm.setDouble(1,o.getValor());
         stm.setTimestamp(2, Timestamp.valueOf(o.getData()));
         stm.setInt(3,o.getCliente().getId());
-
+        //
+        stm.setInt(4,o.getCarro().getId());
+//
         int rows = stm.executeUpdate();
 
         if (rows == 0){
@@ -160,8 +163,13 @@ public class OrcamentoDAOImpl implements OrcamentoDAO {
                 int idServico = rsItens.getInt("idServico");
                 double valorServico = rsItens.getDouble("valor");
 
+
                 Servico servico = servicoDAO.buscarId(idServico);
-                servico.setValor(valorServico);
+                System.out.println("-------------------");
+                System.out.println(idServico);
+                System.out.println(valorServico);
+                System.out.println("-------------------");
+               servico.setValor(valorServico);
 
                 orcamento.adicionaServico(servico);
 

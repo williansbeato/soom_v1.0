@@ -14,6 +14,7 @@ public class  Orcamento {
 
     private int id;
     private Cliente cliente;
+    private Carro carro;
     private ObservableList<Servico> servicos;
     private double valor;
     private LocalDateTime data;
@@ -27,7 +28,7 @@ public class  Orcamento {
     public void adicionaServico(Servico s){
         servicos.add(s);
 
-        valor+=s.getValor() ;
+       valor+=s.getValor() ;
 
     }
 
@@ -46,7 +47,13 @@ public class  Orcamento {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    //
+    public Carro getCarro() {return carro; }
 
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
+//
     public ObservableList<Servico> getServicos() {
         return servicos;
     }

@@ -1,12 +1,17 @@
 package soom.control;
 
-import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import soom.model.Cliente;
-import soom.model.Oficina;
-import soom.model.Orcamento;
-import soom.model.Servico;
+import soom.model.*;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.FileChooser;
+
+import soom.model.GeradorPDF;
+
+import java.io.File;
+
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -37,6 +42,10 @@ public class  JanelaListaOrcamentos {
 
     @FXML
     private TableColumn<Servico, Double> tbcValorServico;
+
+
+    @FXML
+    private Button btgeraRela;
 
 
     public void initialize(){
@@ -71,5 +80,29 @@ public class  JanelaListaOrcamentos {
             tbwServicosOrcamento.setItems(orcamento.getServicos());
         }
     }
+
+
+    @FXML
+    public void geraPdf(javafx.event.ActionEvent av) {
+
+        GeradorPDF geradorPDF = new GeradorPDF();
+
+        Button bt = (Button) av.getSource();
+
+        FileChooser fc = new FileChooser();
+        File f = fc.showSaveDialog(null);
+
+
+        if(f != null){
+
+            String arq = f.getAbsolutePath();
+            Orcamento item = tbwOrcamentos.getSelectionModel().getSelectedItem();
+            geradorPDF.geraRela(arq,item);
+
+        }
+
+    }
+
+
 
 }

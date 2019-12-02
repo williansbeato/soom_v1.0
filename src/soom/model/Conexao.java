@@ -69,7 +69,7 @@ public class Conexao {
 
     //private static String CON_STR=CON_STR_SQLITE;
 
-    private static int MAX_CON=5;
+    private static int MAX_CON=10;
 
     private  static  Connection[] connections = new Connection[MAX_CON];
 

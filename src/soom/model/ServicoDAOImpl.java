@@ -17,7 +17,8 @@ public class ServicoDAOImpl implements ServicoDAO {
     public void insere(Servico s) throws SQLException {
 
         Connection con = Conexao.getConnection();
-        PreparedStatement stm = con.prepareStatement(INSERE, Statement.RETURN_GENERATED_KEYS);
+        //PreparedStatement stm = con.prepareStatement(INSERE, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement stm = con.prepareStatement(INSERE);
 
         stm.setString(1,s.getCategoria());
         stm.setString(2,s.getNome());

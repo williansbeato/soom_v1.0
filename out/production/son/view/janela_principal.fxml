@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
-
-
-
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.cell.ComboBoxListCell?>
-<?import javafx.scene.control.ComboBox?>
-<BorderPane fx:controller="soom.control.JanelaPrincipal"
-            xmlns:fx="http://javafx.com/fxml"
->
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="soom.control.JanelaPrincipal">
 
 
     <top>
@@ -29,19 +12,19 @@
             <menus>
                 <Menu text="Arquivo">
                     <items>
-                        <MenuItem text="Cadastra Cliente" onAction="#cadastraCliente"/>
+                        <MenuItem onAction="#cadastraCliente" text="Cadastra Cliente" />
 
-                        <MenuItem text="Cadastra Serviços" onAction="#cadastraServico"/>
+                        <MenuItem onAction="#cadastraServico" text="Cadastra Serviços" />
 
-                        <MenuItem text="Cadastra Carro" onAction="#cadastraCarro"/>
+                        <MenuItem onAction="#cadastraCarro" text="Cadastra Carro" />
 
-                        <MenuItem text="Cadastra Peças" onAction="#cadastraPeca"/>
+<!--                        <MenuItem onAction="#cadastraPeca" text="Cadastra Peças" />-->
 
                     </items>
                 </Menu>
                 <Menu text="Lista">
                     <items>
-                        <MenuItem onAction="#listaOrcamentos" text="Lista Orcamentos"/>
+                        <MenuItem onAction="#listaOrcamentos" text="Lista Orcamentos" />
                     </items>
                 </Menu>
             </menus>
@@ -51,11 +34,14 @@
     <center>
         <HBox spacing="10">
             <padding>
-                <Insets bottom="5" left="5" top="5" right="5"/>
+                <Insets bottom="5" left="5" right="5" top="5" />
             </padding>
-            <VBox >
-                <Label text="Clientes"/>
-                <ComboBox fx:id="ltwClientes" onAction="#adicionaClienteOrcamento" />
+            <VBox>
+                <Label text="Clientes" />
+                <ComboBox fx:id="ltwClientes" onAction="#adicionaClienteOrcamento" promptText="Selecione um Cliente" />
+
+                <Label text="Carro" />
+                <ComboBox fx:id="ltwCarros" onAction="#adicionaCarroOrcamento" promptText="Selecione um Carro" />
 <!--          mudar nome do ltwClientes para cbClientes-->
             </VBox>
 
@@ -65,20 +51,21 @@
 <!--            </VBox>-->
 
             <VBox>
-                <Label text="Servicos"/>
-                <ListView fx:id="ltwServicos"/>
+                <Label text="Servicos" />
+                <ComboBox fx:id="ltwServicos" promptText="Selecione o Serviço" />
             </VBox>
 
             <VBox alignment="CENTER">
-                <Button text=">" fx:id="btIncluir" onAction="#incluirServicoOrcamento" />
+                <Button fx:id="btIncluir" onAction="#incluirServicoOrcamento" text="&gt;" />
             </VBox>
 
-            <VBox  spacing="5">
+            <VBox spacing="5">
 
-                <Button text="Iniciar Orcamento" fx:id="btIniciar" onAction="#iniciarOrcamento"/>
-                <Label text="Servicos Selecionados"/>
-                <ListView fx:id="ltwServicosOrcamento"/>
-                <Button text="Fechar Orcamento" fx:id="btFechar" onAction="#fecharOrcamento"/>
+                <Button fx:id="btIniciar" onAction="#iniciarOrcamento" text="Iniciar Orcamento" />
+                <Label text="Servicos Selecionados" />
+                <ListView fx:id="ltwServicosOrcamento" />
+                <Button fx:id="btFechar" onAction="#fecharOrcamento" text="Fechar Orcamento" />
+            <Label fx:id="lbRelogio" />
             </VBox>
 
         </HBox>

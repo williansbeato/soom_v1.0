@@ -9,8 +9,8 @@ public class ClienteDAOImpl implements ClienteDAO {
     private static String INSERE = "INSERT INTO clientes(nome,telefone) VALUES(?,?)";
     private static String LISTA = "SELECT * FROM clientes";
     private static String BUSCA_ID = "SELECT * FROM clientes WHERE id=?";
-    private static String DELETA = "DELETE FROM carros WHERE id=?";
-    private static String UPDATE = "UPDATE carros SET marca = ?, modelo = ? WHERE id = ?";
+    private static String DELETA = "DELETE FROM clientes WHERE id=?";
+    private static String UPDATE = "UPDATE clientes SET nome = ?, telefone = ? WHERE id = ?";
 
     @Override
     public void insere(Cliente c) throws SQLException {
@@ -21,7 +21,7 @@ public class ClienteDAOImpl implements ClienteDAO {
         stm.setString(1,c.getNome());
         stm.setString(2,c.getTelefone());
 
-        stm.execute();
+        stm.executeUpdate();
         stm.close();
         con.close();
 

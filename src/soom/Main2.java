@@ -12,7 +12,7 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
 //
 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/janela_cadastro_peca.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/janela_login.fxml"));
 
         primaryStage.setTitle("SOOM");
         primaryStage.setScene(new Scene(root, 800, 600));

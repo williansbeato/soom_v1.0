@@ -11,5 +11,6 @@ public interface UsuarioDAO {
 
     void update(Usuario u) throws SQLException;
     void delete(Usuario u) throws SQLException;
+    void verificaLogin(Usuario u) throws  SQLException;
 
 }

@@ -21,10 +21,18 @@ public class CarroDAOImpl implements CarroDAO {
         Connection con = Conexao.getConnection();
         PreparedStatement stm = con.prepareStatement(INSERE, Statement.RETURN_GENERATED_KEYS);
 
+   //     PreparedStatement stm = con.prepareStatement(INSERE);
+
+
         stm.setString(1,ca.getMarca());
         stm.setString(2,ca.getModelo());
 
-        stm.execute();
+        stm.executeUpdate();
+
+        ResultSet rs = stm.getGeneratedKeys();
+        rs.next();
+
+        //stm.execute();
         stm.close();
         con.close();
 

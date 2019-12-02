@@ -19,7 +19,7 @@ public class PecaDAOImpl implements PecaDAO {
 
         Connection con = Conexao.getConnection();
 
-        PreparedStatement stm = con.prepareStatement(INSERE, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement stm = con.prepareStatement(INSERE);
 
         stm.setString(1,p.getCategoria());
         stm.setString(2,p.getNome());

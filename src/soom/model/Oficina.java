@@ -238,4 +238,19 @@ public class Oficina {
         return false;
     }
 
+////////
+public boolean adicionaCarroOrcamento(Carro ca){
+
+    if (orcamentoAtual != null){
+        orcamentoAtual.setCarro(ca);
+
+        return true;
+    }
+
+    return false;
+}
+
+    ////////////
+  //  adicionaCarroOrcamento
+
 }
